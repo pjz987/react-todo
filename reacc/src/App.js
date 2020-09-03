@@ -34,6 +34,14 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount () {
+    fetch('/', {
+      method: 'POST'
+    })
+      .then(response => response.json())
+      .then(data => { console.log(data) })
+  }
+
   handleAddTodo = (todo) => {
     this.setState({
       todos: this.state.todos.concat([{
@@ -51,7 +59,8 @@ class App extends React.Component {
 
   handleRemove = (i) => {
     const todos = this.state.todos.slice()
-    this.setState({ todos: todos.splice(i, 1)})
+    todos.splice(i, 1)
+    this.setState({ todos: todos })
   }
 
   render () {
@@ -76,22 +85,22 @@ class App extends React.Component {
             <Route path='/done'>
               <Todos
                 todos={this.state.todos.filter(todo => todo.done)}
-                handleDone={this.handleDone}
-                handleRemove={this.handleRemove}
+                handleDone={(i) => this.handleDone(i)}
+                handleRemove={(i) => this.handleRemove(i)}
               />
             </Route>
             <Route path='/todo'>
               <Todos
                 todos={this.state.todos.filter(todo => !todo.done)}
-                handleDone={this.handleDone}
-                handleRemove={this.handleRemove}
+                handleDone={(i) => this.handleDone(i)}
+                handleRemove={(i) => this.handleRemove(i)}
               />
             </Route>
             <Route path='/all'>
               <Todos
                 todos={this.state.todos}
-                handleDone={this.handleDone}
-                handleRemove={this.handleRemove}
+                handleDone={(i) => this.handleDone(i)}
+                handleRemove={(i) => this.handleRemove(i)}
               />
             </Route>
           </Switch>

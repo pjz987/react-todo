@@ -4,7 +4,8 @@
   "description": "react todo",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npx nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/pjz987/react-todo/issues"
   },
-  "homepage": "https://github.com/pjz987/react-todo#readme"
+  "homepage": "https://github.com/pjz987/react-todo#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4",
+    "sqlite": "^4.0.14",
+    "sqlite3": "^5.0.0"
+  }
 }
